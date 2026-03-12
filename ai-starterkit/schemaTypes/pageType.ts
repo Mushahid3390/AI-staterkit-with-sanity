@@ -1,0 +1,18 @@
+import { defineField, defineType } from "sanity"
+
+export const pageType = defineType({
+  name: 'page',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'title',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+        name: "slug",
+        type: "slug",
+        options: {source: "title"}
+    })
+  ],
+})
