@@ -7,10 +7,11 @@ import {
 } from '@/components/sections/pricing/data';
 import { cn } from '@/lib/utils';
 import { PricingCard } from '@/components/sections/pricing/card';
+import { Props } from '../hero-section';
 
 type BillingPeriodKey = (typeof BILLING_PERIODS)[number]['key'];
 
-export default function PricingSection() {
+export default function PricingSection({data}: Props) {
   const [activeBillingPeriodKey, setActiveBillingPeriodKey] =
     useState<BillingPeriodKey>('monthly');
 

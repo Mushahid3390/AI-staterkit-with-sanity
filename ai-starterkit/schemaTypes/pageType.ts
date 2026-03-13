@@ -1,8 +1,9 @@
 import { defineField, defineType } from "sanity"
 
 export const pageType = defineType({
-  name: 'page',
+  name: 'homepage',
   type: 'document',
+
   fields: [
     defineField({
       name: 'title',

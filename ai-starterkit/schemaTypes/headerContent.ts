@@ -47,7 +47,7 @@ export const navbarType = defineType({
               of: [
                 {
                   type: 'reference',
-                  to: [{type: "page"}]
+                  to: [{type: "homepage"}]
                 },
               ],
             }),

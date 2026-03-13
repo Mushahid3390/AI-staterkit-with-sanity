@@ -1,24 +1,47 @@
-import Footer from '@/components/layout/footer';
-import Header from '@/components/layout/header/header';
-import { urlToHttpOptions } from 'url';
+import Footer from "@/components/layout/footer";
+import Header from "@/components/layout/header/header";
+import { urlToHttpOptions } from "url";
+import { client } from "@/sanity/client";
+import { link } from "@/components/layout/header/desktop-nav";
 
+const NAVBAR_QUERY = `
+*[_type == "navbar"][0]{
+"logobalck": logobalck.asset->url,
+"logowhite": logowhite.asset->url,
+links[]{
+title,
+href,
+hasDropdown,
+dropdown[]->{
+title,
+"slug": slug.current
+}
+},
+buttons[]{
+label,
+href
+}
+}
+`;
 
-interface navtype{
-  logo: string,
-  buttons: {label: string, href: string}[];
-  links: {title: string, href: string, hasDropdown: boolean, dropdown: {label: "string", href: "string"}[]|null}[]
+export interface navtype {
+  logobalck: string;
+  logowhite: string;
+  buttons: { label: string; href: string }[];
+  links: link[];
 }
 
-const options = {next: { revalidate: 30 }};
+const options = { next: { revalidate: 30 } };
 
 export default async function SiteLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>){
-     return (
+}) {
+  const navbarData = await client.fetch<navtype>(NAVBAR_QUERY, {}, options);
+  return (
     <div className="dark:bg-[#101828] flex flex-col flex-1">
-      <Header />
+      <Header navbarData={navbarData} />
       <div className="isolate flex-1 flex flex-col">{children}</div>
       <Footer />
     </div>

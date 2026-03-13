@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Props } from "./hero-section"; 
 
-export default function BenefitsGrid() {
+export default function BenefitsGrid({data}:Props) {
   return (
     <section className="bg-gray-900 py-14 md:py-28">
       <div className="wrapper">

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { CORE_FEATURES } from "./data";
+import { Props } from "../hero-section";
 
-export function CoreFeatures() {
+export function CoreFeatures({data}: Props) {
   return (
     <section className="py-30 bg-gray-50 dark:bg-white/1 px-5">
       <div className="max-w-[72rem] mx-auto">

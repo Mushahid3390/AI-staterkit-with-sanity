@@ -2,6 +2,7 @@
 
 import { MinusIcon, PlusIcon } from "@/icons/icons";
 import { useState } from "react";
+import { Props } from "./hero-section";
 
 // Define the FAQ item type
 interface FAQItem {
@@ -10,7 +11,7 @@ interface FAQItem {
   answer: string;
 }
 
-export default function FaqAccordion() {
+export default function FaqAccordion({ data }: Props) {
   const [activeItem, setActiveItem] = useState<number | null>(1);
 
   // FAQ data

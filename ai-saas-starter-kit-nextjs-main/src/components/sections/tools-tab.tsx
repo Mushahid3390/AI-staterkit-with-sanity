@@ -12,6 +12,7 @@ import {
 } from '@/icons/icons';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { Props } from './hero-section';
 
 // Define the tab type
 interface Tab {
@@ -24,7 +25,7 @@ interface Tab {
   description: string;
 }
 
-export default function AIToolsTabs() {
+export default function AIToolsTabs({data}: Props) {
   const [activeTab, setActiveTab] = useState('text');
 
   // Tab data

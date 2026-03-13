@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { Props } from './hero-section';
 
   const testimonials = [
     {
@@ -78,7 +79,7 @@ import { useState } from 'react';
     },
   ];
 
-  export default function TestimonialsSection() {
+  export default function TestimonialsSection({data}: Props) {
     const [showAll, setShowAll] = useState(false);
 
     // Determine which testimonials to display
