@@ -13,6 +13,14 @@ export const pageType = defineType({
         name: "slug",
         type: "slug",
         options: {source: "title"}
+    }),
+    defineField({
+      name: "sections",
+      title: "Sections",
+      type: "array",
+      of: [
+        {type: "herosection"},
+      ]
     })
   ],
 })
