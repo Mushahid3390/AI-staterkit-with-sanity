@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { Props } from "./hero-section"; 
+import { Props, urlFor } from "./hero-section"; 
 import { BenefitGrid} from "@/app/(site)/page";
 
 interface benefitsProps {
@@ -15,12 +15,10 @@ export default function BenefitsGrid({data}:benefitsProps) {
       <div className="wrapper">
         <div className="max-w-2xl mx-auto mb-12 text-center">
           <h2 className="max-w-lg mx-auto mb-3 font-bold text-center text-white dark:text-white/90 text-3xl md:text-title-lg">
-            The key benefits of using our tools.
+            {data?.heading}
           </h2>
           <p className="max-w-2xl mx-auto text-base dark: font-normal leading-6 text-white/50">
-            Unlock the Potential of Innovation. Discover the Advanced AI Tools
-            Transforming Your Ideas into Reality with Unmatched Precision and
-            Intelligence.
+            {data?.description}
           </p>
         </div>
         <div className="max-w-[1008px] mx-auto">
@@ -29,11 +27,10 @@ export default function BenefitsGrid({data}:benefitsProps) {
               <div className="relative flex flex-col justify-between bg-primary-500 rounded-[20px] p-9 md:p-13">
                 <div className="max-w-sm mb-32">
                   <h3 className="font-bold text-white text-2xl md:text-3xl mb-4">
-                    Craft Professional-Grade Content with AI
+                    {data?.benefitcards[0]?.heading}
                   </h3>
                   <p className="text-base text-white/70">
-                    Transform your ideas into groundbreaking realities with
-                    advanced AI tools.
+                    {data?.benefitcards[0]?.description}
                   </p>
                 </div>
                 <div>
@@ -169,7 +166,7 @@ export default function BenefitsGrid({data}:benefitsProps) {
                   </svg>
 
                   <Image
-                    src="/images/benefits/bn-1.svg"
+                    src={urlFor(data?.benefitcards[0]?.image).url()}
                     className="-mb-8 md:-mb-13 w-full"
                     alt=""
                     width={488}
@@ -183,7 +180,7 @@ export default function BenefitsGrid({data}:benefitsProps) {
               <div className="benefits-bg rounded-[20px] p-12 overflow-hidden">
                 <div>
                   <Image
-                    src="/images/benefits/bn-2.svg"
+                    src={urlFor(data?.benefitcards[1]?.image)?.url()}
                     alt=""
                     width={306}
                     height={279}
@@ -191,11 +188,10 @@ export default function BenefitsGrid({data}:benefitsProps) {
                 </div>
                 <div>
                   <h3 className="font-bold max-w-xs text-white text-2xl md:text-3xl mb-4">
-                    Boost your Productivity 10X with our AI agent tools.
+                    {data?.benefitcards[1]?.heading}
                   </h3>
                   <p className="text-base max-w-sm text-white/70">
-                    Unlock the Potential of Innovation, Discover the Advanced AI
-                    Tools Intelligence.
+                    {data?.benefitcards[1]?.description}
                   </p>
                 </div>
               </div>
@@ -204,22 +200,23 @@ export default function BenefitsGrid({data}:benefitsProps) {
               <div className="lg:px-12 p-8 bg-[#2D0B70] lg:pb-0 lg:p-12 relative rounded-[20px] h-full lg:flex lg:flex-row justify-between bg-cover flex-col gap-5">
                 <div className="max-w-sm relative z-10">
                   <h3 className="font-bold text-white text-2xl md:text-3xl mb-4">
-                    Overcome Writers Block Today
+                    {data.benefitcards[2].heading}
                   </h3>
                   <p className="text-base text-white/70 mb-8">
-                    Discover the cutting-edge AI tools that bring your ideas to
-                    life with exceptional accuracy.
+                    {data.benefitcards[2].description}
                   </p>
                   <Link
-                    href="/email-generator"
+                    href={
+                      data?.benefitcards[2]?.button?.url || "/email-generator"
+                    }
                     className="font-medium inline-block text-sm text-white rounded-full bg-primary-500 hover:bg-primary-600 transition py-3 px-6"
                   >
-                    Try it now for Free
+                    {data?.benefitcards[2]?.button?.label}
                   </Link>
                 </div>
                 <div>
                   <Image
-                    src="/images/benefits/bn-3.svg"
+                    src={urlFor(data?.benefitcards[2]?.image).url()}
                     className="hidden lg:block relative z-10"
                     alt=""
                     width={359}

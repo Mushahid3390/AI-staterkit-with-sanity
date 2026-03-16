@@ -122,7 +122,6 @@ export default async function Home() {
             return <FaqAccordion data={section} />;
         }
       })}
-      <BenefitsGrid data={page.sections[0]} />;
     </>
   );
 }
