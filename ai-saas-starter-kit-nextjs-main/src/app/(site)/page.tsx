@@ -73,7 +73,7 @@ export default async function Home() {
             return <HeroSection data={section} />;
           case "featuresection":
             return <CoreFeatures data={section} />;
-          case "ToolsTab":
+          case "toolstabsection":
             return <ToolsTab data={section} />;
           case "BenefitsGrid":
             return <BenefitsGrid data={section} />;
@@ -85,6 +85,7 @@ export default async function Home() {
             return <FaqAccordion data={section} />;
         }
       })}
+      <ToolsTab data={page.sections[0]} />
     </>
   );
 }

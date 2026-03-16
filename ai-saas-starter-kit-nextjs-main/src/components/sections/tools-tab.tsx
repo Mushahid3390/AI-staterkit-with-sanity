@@ -13,6 +13,7 @@ import {
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Props } from './hero-section';
+import { Hero, section } from '@/app/(site)/page';
 
 // Define the tab type
 interface Tab {
@@ -25,7 +26,10 @@ interface Tab {
   description: string;
 }
 
-export default function AIToolsTabs({data}: Props) {
+interface toolTabProps {
+  data: section,
+}
+export default function AIToolsTabs({data}: toolTabProps) {
   const [activeTab, setActiveTab] = useState('text');
 
   // Tab data
@@ -81,7 +85,7 @@ export default function AIToolsTabs({data}: Props) {
         'Unlock the Potential of Innovation. Discover the Advanced AI Tools Transforming Your Ideas into Reality with Unmatched Precision and Intelligence.',
     },
   ];
-
+   console.log("logo: ", data)
   // Find the active tab
   const currentTab = tabs.find((tab) => tab.id === activeTab) || tabs[0];
 
