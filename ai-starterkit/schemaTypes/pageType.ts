@@ -19,7 +19,12 @@ export const pageType = defineType({
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{type: 'herosection'}, {type: 'featuresection'}, {type: 'toolstabsection'}],
+      of: [
+        {type: 'herosection'},
+        {type: 'featuresection'},
+        {type: 'toolstabsection'},
+        {type: 'benefitgridsection'},
+      ],
     }),
   ],
 })

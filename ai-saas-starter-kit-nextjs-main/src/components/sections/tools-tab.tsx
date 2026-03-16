@@ -87,7 +87,6 @@ export default function AIToolsTabs({data}: toolTabProps) {
   // ];
   // Find the active tab
   const currentTab = data.tabs.find((tab) => tab.id.current === activeTab) || data.tabs[0];
-  console.log("LOGO: ", data)
   return (
     <section className="py-14 md:py-28 dark:bg-dark-primary">
       <div className="wrapper">

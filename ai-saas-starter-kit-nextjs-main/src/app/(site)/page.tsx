@@ -19,7 +19,7 @@ export interface page {
   title: string;
 }
 
-export type section = Hero | Feature | ToolsTab;
+export type section = Hero | Feature | ToolsTab | BenefitGrid;
 
 export type Hero = {
   buttons: button[];
@@ -83,6 +83,23 @@ export type tab = {
   _key: string;
 }
 
+export interface BenefitGrid {
+  heading: string;
+  description: string;
+  benefitcards: benefitCard[];
+  _key: string;
+  _type: "benefitgridsection";
+}
+
+export type benefitCard = {
+  heading: string;
+  description: string;
+  hasButton: boolean|null,
+  button: {label: string, url: string}|null,
+  image: image;
+  _key: string;
+}
+ 
 export default async function Home() {
   const page = await client.fetch<page>(homePage);
   return (
@@ -95,7 +112,7 @@ export default async function Home() {
             return <CoreFeatures data={section} />;
           case "toolstabsection":
             return <ToolsTab data={section} />;
-          case "BenefitsGrid":
+          case "benefitgridsection":
             return <BenefitsGrid data={section} />;
           case "TestimonialsSection":
             return <TestimonialsSection data={section} />;
@@ -105,6 +122,7 @@ export default async function Home() {
             return <FaqAccordion data={section} />;
         }
       })}
+      <BenefitsGrid data={page.sections[0]} />;
     </>
   );
 }

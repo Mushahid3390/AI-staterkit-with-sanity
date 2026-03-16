@@ -41,7 +41,7 @@ export const navbarType = defineType({
             },
             defineField({
               name: 'dropdown',
-              title: 'dropdownlink',
+              title: 'dropdownlink',  
               type: 'array',
               hidden: ({parent}) => !parent?.hasDropdown,
               of: [
