@@ -11,17 +11,15 @@ export const pageType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-        name: "slug",
-        type: "slug",
-        options: {source: "title"}
+      name: 'slug',
+      type: 'slug',
+      options: {source: 'title'},
     }),
     defineField({
-      name: "sections",
-      title: "Sections",
-      type: "array",
-      of: [
-        {type: "herosection"},
-      ]
-    })
+      name: 'sections',
+      title: 'Sections',
+      type: 'array',
+      of: [{type: 'herosection'}, {type: 'featuresection'}],
+    }),
   ],
 })

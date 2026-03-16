@@ -56,26 +56,24 @@ export default async function Home() {
 
   return (
     <>
-      {
-        page?.sections?.map((section) => {
-         switch (section._type) {
-           case "herosection":
-             return <HeroSection data={section} />;
-           case "CoreFeatures":
-             return <CoreFeatures data={section} />;
-           case "ToolsTab":
-            return <ToolsTab data= {section} />;
-           case "BenefitsGrid" :
-            return <BenefitsGrid data= {section} />;
-           case "TestimonialsSection" :
-            return <TestimonialsSection data = {section} />
-           case "PricingSection" :
-            return <PricingSection data = {section} />
-           case "FaqAccordion" : 
-            return <FaqAccordion data = {section} />
-         }
-        })
-      }
+      {page?.sections?.map((section) => {
+        switch (section._type) {
+          case "herosection":
+            return <HeroSection data={section} />;
+          case "featuresection":
+            return <CoreFeatures data={section} />;
+          case "ToolsTab":
+            return <ToolsTab data={section} />;
+          case "BenefitsGrid":
+            return <BenefitsGrid data={section} />;
+          case "TestimonialsSection":
+            return <TestimonialsSection data={section} />;
+          case "PricingSection":
+            return <PricingSection data={section} />;
+          case "FaqAccordion":
+            return <FaqAccordion data={section} />;
+        }
+      })}
     </>
   );
 }
