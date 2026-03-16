@@ -19,7 +19,7 @@ export interface page {
   title: string;
 }
 
-export type section = Hero | Feature;
+export type section = Hero | Feature | ToolsTab;
 
 export type Hero = {
   buttons: button[];
@@ -63,6 +63,26 @@ export type card = {
   description: string;
 };
 
+export interface ToolsTab {
+  heading: string;
+  description: string;
+  button: { title: string; url: string | null };
+  tabs: tab[];
+  _key: string;
+  _type: "toolstabsection";
+}
+
+export type tab = {
+  id: {_type: "slug", current: string};
+  label: string;
+  icon: image;
+  lightimage: image;
+  darkimage: image;
+  title: string;
+  description: string;
+  _key: string;
+}
+
 export default async function Home() {
   const page = await client.fetch<page>(homePage);
   return (
@@ -85,7 +105,6 @@ export default async function Home() {
             return <FaqAccordion data={section} />;
         }
       })}
-      <ToolsTab data={page.sections[0]} />
     </>
   );
 }
