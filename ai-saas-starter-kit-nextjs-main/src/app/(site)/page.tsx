@@ -13,23 +13,25 @@ export const homePage = `*[_type == "homepage" && slug.current == "home-page"][0
     sections[]
 }`;
 
-export interface page{
-    sections: section[],
-    slug: {_type: string, current: string},
-    title: string,
+export interface page {
+  sections: section[];
+  slug: { _type: string; current: string };
+  title: string;
 }
 
-export type section = {
-   buttons: button[],
-   description: string,
-   heading: string,
-   image: image,
-   sponsored: string,
-   sponsorlogo: logo[],
-   subheading: string,
-   _key: string,
-   _type: string,
-}
+export type section = Hero | Feature;
+
+export type Hero = {
+  buttons: button[];
+  description: string;
+  heading: string;
+  image: image;
+  sponsored: string;
+  sponsorlogo: logo[];
+  subheading: string;
+  _key: string;
+  _type: "herosection";
+};
 
 export type button = {
   _key: string,
@@ -47,13 +49,22 @@ export type logo = {
   _key: string,
 }
 
+export interface Feature {
+  heading: string;
+  description: string;
+  featurecards: card[];
+  _key: string;
+  _type: "featuresection";
+}
 
-
-
+export type card = {
+  icon: image;
+  heading: string;
+  description: string;
+};
 
 export default async function Home() {
   const page = await client.fetch<page>(homePage);
-
   return (
     <>
       {page?.sections?.map((section) => {

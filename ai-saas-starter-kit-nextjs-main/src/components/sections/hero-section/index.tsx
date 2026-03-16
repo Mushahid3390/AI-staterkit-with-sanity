@@ -3,7 +3,7 @@ import Link from 'next/link';
 import HeroLogos from '../hero-logos';
 import { Subheading } from './subheading';
 import { IntroVideo } from './intro-video';
-import { section } from '@/app/(site)/page';
+import { Hero, section } from '@/app/(site)/page';
 import CreateImageUrlBuilder, { createImageUrlBuilder } from '@sanity/image-url';
 import { client } from "@/sanity/client";
 import { image } from '@/app/(site)/page';
@@ -15,10 +15,11 @@ export function urlFor(source:image) {
 }
 
 export interface Props {
-  data : section,
+  data : Hero,
 }
 
 export default function HeroSection({data}: Props) {
+
   return (
     <section className="pt-16 relative overflow-hidden dark:bg-[#171F2E]">
       <div className="max-w-[120rem] mx-auto relative">
