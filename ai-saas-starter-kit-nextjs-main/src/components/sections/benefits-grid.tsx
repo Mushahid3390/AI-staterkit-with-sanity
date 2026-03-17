@@ -199,10 +199,10 @@ export default function BenefitsGrid({data}:benefitsProps) {
               <div className="lg:px-12 p-8 bg-[#2D0B70] lg:pb-0 lg:p-12 relative rounded-[20px] h-full lg:flex lg:flex-row justify-between bg-cover flex-col gap-5">
                 <div className="max-w-sm relative z-10">
                   <h3 className="font-bold text-white text-2xl md:text-3xl mb-4">
-                    {data.benefitcards[2].heading}
+                    {data?.benefitcards[2]?.heading}
                   </h3>
                   <p className="text-base text-white/70 mb-8">
-                    {data.benefitcards[2].description}
+                    {data?.benefitcards[2]?.description}
                   </p>
                   <Link
                     href={

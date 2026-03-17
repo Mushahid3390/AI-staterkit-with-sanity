@@ -98,18 +98,18 @@ import { section, testimonial, testimonialCard } from '@/app/(site)/page';
           <div>
             <div className="max-w-2xl mx-auto mb-12 text-center">
               <h2 className="mb-3 font-bold text-center text-gray-800 text-3xl dark:text-white/90 md:text-title-lg">
-                {data.heading}
+                {data?.heading}
               </h2>
               <p className="max-w-xl mx-auto leading-6 text-gray-500 dark:text-gray-400">
-                {data.description}
+                {data?.description}
               </p>
             </div>
 
             {/* Testimonials Grid */}
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3 max-w-[72rem] mx-auto">
-              {visibleTestimonials.map((testimonial) => (
+              {visibleTestimonials?.map((testimonial) => (
                 <TestimonialCard
-                  key={testimonial._key}
+                  key={testimonial?._key}
                   testimonial={testimonial}
                 />
               ))}
@@ -147,8 +147,8 @@ import { section, testimonial, testimonialCard } from '@/app/(site)/page';
         <div className="flex items-center p-3 mb-3 bg-white/90 dark:bg-white/[0.03] rounded-2xl">
           <div>
             <Image
-              src={urlFor(testimonial.profileimg).url() || "/placeholder.svg"}
-              alt={testimonial.name}
+              src={urlFor(testimonial?.profileimg).url() || "/placeholder.svg"}
+              alt={testimonial?.name}
               width={52}
               height={52}
               className="size-13 object-cover ring-2 ring-white dark:ring-gray-700 mr-4 rounded-full drop-shadow-[0_8px_20px_rgba(0,0,0,0.08)]"
@@ -156,16 +156,16 @@ import { section, testimonial, testimonialCard } from '@/app/(site)/page';
           </div>
           <div>
             <h3 className="text-gray-800 font-base dark:text-white/90">
-              {testimonial.name}
+              {testimonial?.name}
             </h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              {testimonial.workat}
+              {testimonial?.workat}
             </p>
           </div>
         </div>
         <div className="p-5 rounded-2xl bg-white/90 dark:bg-white/[0.03]">
           <p className="text-base leading-6 text-gray-700 dark:text-gray-400">
-            {testimonial.description}
+            {testimonial?.description}
           </p>
         </div>
       </div>

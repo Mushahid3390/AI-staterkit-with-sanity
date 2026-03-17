@@ -8,6 +8,7 @@ import { benefitGrid } from './benefitGridType';
 import { testimonialType } from './testimonialType';
 import { pricingType } from './pricingType';
 import { faqType } from './faqType';
+import { footerType } from './footerType';
 
 export const schemaTypes = [
     postType,
@@ -19,5 +20,6 @@ export const schemaTypes = [
     benefitGrid,
     testimonialType,
     pricingType,
-    faqType
+    faqType,
+    footerType
 ]

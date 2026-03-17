@@ -17,7 +17,7 @@ interface faqProps {
 }
 
 export default function FaqAccordion({ data }: faqProps) {
-  const [activeItem, setActiveItem] = useState(data.faqs[0]._key);
+  const [activeItem, setActiveItem] = useState(data?.faqs[0]?._key);
 
   // FAQ data
   const faqItems: FAQItem[] = [
@@ -61,21 +61,21 @@ export default function FaqAccordion({ data }: faqProps) {
       <div className="wrapper">
         <div className="max-w-2xl mx-auto mb-12 text-center">
           <h2 className="mb-3 font-bold text-center text-gray-800 text-3xl dark:text-white/90 md:text-title-lg">
-            {data.heading}
+            {data?.heading}
           </h2>
           <p className="max-w-md mx-auto leading-6 text-gray-500 dark:text-gray-400">
-           {data.description}
+           {data?.description}
           </p>
         </div>
         <div className="max-w-150 mx-auto">
           <div className="space-y-4">
-            {data.faqs.map((item) => {
+            {data?.faqs?.map((item) => {
               return(
               <FAQItem
-                key={item._key}
+                key={item?._key}
                 item={item}
-                isActive={activeItem === item._key}
-                onToggle={async () => toggleItem(item._key)}
+                isActive={activeItem === item?._key}
+                onToggle={async () => toggleItem(item?._key)}
               />
             )})}
           </div>
@@ -101,7 +101,7 @@ function FAQItem({ item, isActive, onToggle }: faqItemProps) {
         aria-expanded={isActive}
       >
         <span className="text-lg font-medium text-gray-800 dark:text-white/90">
-          {item.Ques}
+          {item?.Ques}
         </span>
         <span className="shrink-0 ml-6">
           {isActive ? <MinusIcon /> : <PlusIcon />}

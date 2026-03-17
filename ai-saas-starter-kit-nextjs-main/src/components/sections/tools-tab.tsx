@@ -92,10 +92,10 @@ export default function AIToolsTabs({data}: toolTabProps) {
       <div className="wrapper">
         <div className="max-w-2xl mx-auto mb-12 text-center">
           <h2 className="mb-3 font-bold text-center text-gray-800 dark:text-white/90 text-3xl md:text-title-lg">
-            {data.heading}
+            {data?.heading}
           </h2>
           <p className="max-w-2xl mx-auto leading-6 text-gray-500 dark:text-gray-400">
-            {data.description}
+            {data?.description}
           </p>
         </div>
 
@@ -104,23 +104,23 @@ export default function AIToolsTabs({data}: toolTabProps) {
             {/* Tab Navigation */}
             <div className="overflow-x-auto custom-scrollbar mx-auto max-w-fit relative">
               <div className="flex gap-2 min-w-max rounded-full bg-gray-100 dark:bg-white/5 p-1">
-                {data.tabs.map((tab) => (
+                {data?.tabs?.map((tab) => (
                   <button
-                    key={tab._key}
-                    onClick={() => setActiveTab(tab.id.current)}
+                    key={tab?._key}
+                    onClick={() => setActiveTab(tab?.id?.current)}
                     className={`flex items-center h-12 gap-2 px-4 py-3 text-sm font-medium transition-colors duration-200 rounded-full ${
-                      activeTab === tab.id.current
+                      activeTab === tab?.id?.current
                         ? "bg-white dark:text-white/90 dark:bg-white/10 text-gray-800"
                         : "text-gray-500 dark:text-gray-400 bg-transparent"
                     }`}
                   >
                     <Image
-                       src={urlFor(tab.icon).url()} 
-                       alt={tab.label}
+                       src={urlFor(tab?.icon).url()} 
+                       alt={tab?.label}
                        width= {32}
                        height={32} 
                        />
-                    <span className="truncate">{tab.label}</span>
+                    <span className="truncate">{tab?.label}</span>
                   </button>
                 ))}
               </div>
@@ -130,29 +130,29 @@ export default function AIToolsTabs({data}: toolTabProps) {
 
             <div className="p-6 tab-img-bg overflow-hidden rounded-4xl mt-8">
               <div className="p-3 tab-img-overlay">
-                {data.tabs.map((tab) => (
-                  <Fragment key={tab._key}>
+                {data?.tabs.map((tab) => (
+                  <Fragment key={tab?._key}>
                     <Image
-                      src={urlFor(tab.lightimage).url() || "/placeholder.svg"}
-                      alt={tab.label}
+                      src={urlFor(tab?.lightimage).url() || "/placeholder.svg"}
+                      alt={tab?.label}
                       width={936}
                       height={535}
                       className={cn(
                         "w-full rounded-2xl block dark:hidden",
-                        currentTab.id.current !== tab.id.current && "hidden!",
+                        currentTab?.id?.current !== tab?.id?.current && "hidden!",
                       )}
                       quality={90}
                       priority
                     />
 
                     <Image
-                      src={urlFor(tab.darkimage).url() || "/placeholder.svg"}
+                      src={urlFor(tab?.darkimage).url() || "/placeholder.svg"}
                       alt={tab.label}
                       width={936}
                       height={535}
                       className={cn(
                         "w-full rounded-2xl hidden dark:block",
-                        currentTab.id.current !== tab.id.current && "hidden!",
+                        currentTab?.id?.current !== tab?.id?.current && "hidden!",
                       )}
                       quality={90}
                       priority
@@ -165,13 +165,13 @@ export default function AIToolsTabs({data}: toolTabProps) {
             {/* Bottom Section */}
             <div className="mt-6 text-center">
               <h2 className="mb-2 text-xl font-bold text-gray-800 dark:text-white/90">
-                {currentTab.title}
+                {currentTab?.title}
               </h2>
               <p className="max-w-xl mx-auto mb-6 text-sm text-gray-500 dark:text-gray-400">
-                {currentTab.description}
+                {currentTab?.description}
               </p>
               <button className="px-6 py-3 text-sm font-medium text-white transition-colors rounded-full bg-primary-500 hover:bg-primary-600">
-                {data.button.title}
+                {data?.button?.title}
               </button>
             </div>
           </div>

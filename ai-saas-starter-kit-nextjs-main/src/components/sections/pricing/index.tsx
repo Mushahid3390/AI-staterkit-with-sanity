@@ -22,10 +22,10 @@ export default function PricingSection({ data }: pricingProps) {
       <div className="wrapper">
         <div className="max-w-2xl mx-auto mb-12 text-center">
           <h2 className="mb-3 font-bold text-center text-gray-800 text-3xl dark:text-white/90 md:text-title-lg">
-            {data.heading}
+            {data?.heading}
           </h2>
           <p className="max-w-xl mx-auto leading-6 text-gray-500 dark:text-gray-400">
-           {data.description}
+           {data?.description}
           </p>
         </div>
 
@@ -33,26 +33,26 @@ export default function PricingSection({ data }: pricingProps) {
           {/* Billing Toggle */}
           <div className="flex justify-center relative z-30 mt-12">
             <div className="relative flex p-1 bg-white dark:bg-[#1D2939] rounded-full shadow-theme-xs">
-              {data.billingPlan[0].price.map((period) => (
+              {data?.billingPlan[0]?.price?.map((period) => (
                 <button
-                  key={period.period}
-                  onClick={() => setActiveBillingPeriodKey(period.period)}
+                  key={period?.period}
+                  onClick={() => setActiveBillingPeriodKey(period?.period)}
                   className={cn(
                     "relative flex items-center gap-2 px-6 py-2 text-sm font-medium transition-colors duration-200" +
                       " rounded-full" +
                       " text-gray-700 dark:text-gray-400",
                     {
                       "bg-gray-800 dark:bg-white/[0.05] text-white dark:text-white":
-                        period.period === activeBillingPeriodKey,
-                      "pr-2": period.saving,
+                        period?.period === activeBillingPeriodKey,
+                      "pr-2": period?.saving,
                     },
                   )}
                 >
-                  {period.period}
+                  {period?.period}
 
-                  {period.saving && (
+                  {period?.saving && (
                     <span className="bg-orange-400 text-white text-xs px-2 py-0.5 rounded-full">
-                      Save {period.saving}
+                      Save {period?.saving}
                     </span>
                   )}
                 </button>
@@ -61,7 +61,7 @@ export default function PricingSection({ data }: pricingProps) {
           </div>
 
           <div className="mt-12 z-30 relative space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-6xl lg:mx-auto lg:grid-cols-3 xl:grid-cols-4">
-            {data.billingPlan.map((plan, index) => (
+            {data?.billingPlan?.map((plan, index) => (
               <PricingCard
                 key={index}
                 plan={plan}
