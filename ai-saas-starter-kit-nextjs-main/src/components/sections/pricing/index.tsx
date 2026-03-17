@@ -8,12 +8,15 @@ import {
 import { cn } from '@/lib/utils';
 import { PricingCard } from '@/components/sections/pricing/card';
 import { Props } from '../hero-section';
+import { section } from '@/app/(site)/page';
 
 type BillingPeriodKey = (typeof BILLING_PERIODS)[number]['key'];
-
-export default function PricingSection({data}: Props) {
+interface pricingProps {
+  data: section
+}
+export default function PricingSection({ data }: pricingProps) {
   const [activeBillingPeriodKey, setActiveBillingPeriodKey] =
-    useState<BillingPeriodKey>('monthly');
+    useState<BillingPeriodKey>("monthly");
 
   return (
     <section className="py-14 md:py-30 bg-gray-50 dark:bg-[#171f2e] dark:bg-linear-180 dark:from-white/3 dark:from-[45.56%] dark:to-white/0">
@@ -38,14 +41,14 @@ export default function PricingSection({data}: Props) {
                   key={period.key}
                   onClick={() => setActiveBillingPeriodKey(period.key)}
                   className={cn(
-                    'relative flex items-center gap-2 px-6 py-2 text-sm font-medium transition-colors duration-200' +
-                      ' rounded-full' +
-                      ' text-gray-700 dark:text-gray-400',
+                    "relative flex items-center gap-2 px-6 py-2 text-sm font-medium transition-colors duration-200" +
+                      " rounded-full" +
+                      " text-gray-700 dark:text-gray-400",
                     {
-                      'bg-gray-800 dark:bg-white/[0.05] text-white dark:text-white':
+                      "bg-gray-800 dark:bg-white/[0.05] text-white dark:text-white":
                         period.key === activeBillingPeriodKey,
-                      'pr-2': period.saving,
-                    }
+                      "pr-2": period.saving,
+                    },
                   )}
                 >
                   {period.label}

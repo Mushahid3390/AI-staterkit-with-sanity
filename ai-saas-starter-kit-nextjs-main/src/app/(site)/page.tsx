@@ -139,6 +139,7 @@ export default async function Home() {
             return <FaqAccordion data={section} />;
         }
       })}
+      <PricingSection data={page.sections[0]} />
     </>
   );
 }

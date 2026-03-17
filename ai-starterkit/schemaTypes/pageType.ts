@@ -25,6 +25,7 @@ export const pageType = defineType({
         {type: 'toolstabsection'},
         {type: 'benefitgridsection'},
         {type: 'testimonialsection'},
+        {type: 'pricingsection'},
       ],
     }),
   ],
