@@ -5,6 +5,7 @@ import { heroType } from './heroType'
 import { featureType } from './featureType';
 import { toolsTab } from './toolsTabType';
 import { benefitGrid } from './benefitGridType';
+import { testimonialType } from './testimonialType';
 
 export const schemaTypes = [
     postType,
@@ -13,5 +14,6 @@ export const schemaTypes = [
     heroType, 
     featureType, 
     toolsTab,
-    benefitGrid
+    benefitGrid,
+    testimonialType,
 ]
