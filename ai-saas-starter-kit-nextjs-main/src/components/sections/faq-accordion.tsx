@@ -3,7 +3,7 @@
 import { MinusIcon, PlusIcon } from "@/icons/icons";
 import { useState } from "react";
 import { Props } from "./hero-section";
-import { section } from "@/app/(site)/page";
+import { faq, Faq, section } from "@/app/(site)/page";
 
 // Define the FAQ item type
 interface FAQItem {
@@ -13,11 +13,11 @@ interface FAQItem {
 }
 
 interface faqProps {
-  data: section
+  data: Faq
 }
 
 export default function FaqAccordion({ data }: faqProps) {
-  const [activeItem, setActiveItem] = useState<number | null>(1);
+  const [activeItem, setActiveItem] = useState(data.faqs[0]._key);
 
   // FAQ data
   const faqItems: FAQItem[] = [
@@ -53,49 +53,45 @@ export default function FaqAccordion({ data }: faqProps) {
     },
   ];
 
-  const toggleItem = (itemId: number) => {
-    setActiveItem(activeItem === itemId ? null : itemId);
+  const toggleItem = (itemId:string) => {
+    setActiveItem(activeItem === itemId ? "": itemId);
   };
-
   return (
     <section id="faq" className="py-14 md:py-28 dark:bg-[#171f2e]">
       <div className="wrapper">
         <div className="max-w-2xl mx-auto mb-12 text-center">
           <h2 className="mb-3 font-bold text-center text-gray-800 text-3xl dark:text-white/90 md:text-title-lg">
-            Frequently Asked Questions
+            {data.heading}
           </h2>
           <p className="max-w-md mx-auto leading-6 text-gray-500 dark:text-gray-400">
-            Answered all frequently asked questions, Still confused? feel free
-            contact with us
+           {data.description}
           </p>
         </div>
-        <div className="max-w-[600px] mx-auto">
+        <div className="max-w-150 mx-auto">
           <div className="space-y-4">
-            {faqItems.map((item) => (
+            {data.faqs.map((item) => {
+              return(
               <FAQItem
-                key={item.id}
+                key={item._key}
                 item={item}
-                isActive={activeItem === item.id}
-                onToggle={() => toggleItem(item.id)}
+                isActive={activeItem === item._key}
+                onToggle={async () => toggleItem(item._key)}
               />
-            ))}
+            )})}
           </div>
         </div>
       </div>
     </section>
   );
 }
-
+interface faqItemProps {
+  item: faq,
+  isActive: boolean,
+  onToggle:() => {},
+  key: string
+}
 // FAQ Item Component
-function FAQItem({
-  item,
-  isActive,
-  onToggle,
-}: {
-  item: FAQItem;
-  isActive: boolean;
-  onToggle: () => void;
-}) {
+function FAQItem({ item, isActive, onToggle }: faqItemProps) {
   return (
     <div className="pb-5 border-b border-gray-200 dark:border-gray-800">
       <button
@@ -105,16 +101,16 @@ function FAQItem({
         aria-expanded={isActive}
       >
         <span className="text-lg font-medium text-gray-800 dark:text-white/90">
-          {item.question}
+          {item.Ques}
         </span>
-        <span className="flex-shrink-0 ml-6">
+        <span className="shrink-0 ml-6">
           {isActive ? <MinusIcon /> : <PlusIcon />}
         </span>
       </button>
       {isActive && (
         <div className="mt-5">
           <p className="text-base leading-7 text-gray-500 dark:text-gray-400">
-            {item.answer}
+            {item.ans}
           </p>
         </div>
       )}

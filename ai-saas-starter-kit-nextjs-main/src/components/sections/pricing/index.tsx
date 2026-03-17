@@ -17,7 +17,6 @@ interface pricingProps {
 export default function PricingSection({ data }: pricingProps) {
   const [activeBillingPeriodKey, setActiveBillingPeriodKey] =
     useState("monthly");
-console.log("data: ", data)
   return (
     <section className="py-14 md:py-30 bg-gray-50 dark:bg-[#171f2e] dark:bg-linear-180 dark:from-white/3 dark:from-[45.56%] dark:to-white/0">
       <div className="wrapper">

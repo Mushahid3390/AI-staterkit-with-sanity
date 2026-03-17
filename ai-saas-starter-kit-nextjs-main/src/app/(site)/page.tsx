@@ -19,7 +19,7 @@ export interface page {
   title: string;
 }
 
-export type section = Hero | Feature | ToolsTab | BenefitGrid | testimonial | Price;
+export type section = Hero | Feature | ToolsTab | BenefitGrid | testimonial | Price | Faq;
 
 export type Hero = {
   buttons: button[];
@@ -140,11 +140,22 @@ export type billingPrice = {
   price: string,
   saving: string,
 }
+export interface Faq {
+  heading: string,
+  description: string,
+  faqs: faq[],
+  _key: string,
+  _type: "faqsection"
+}
 
+export type faq = {
+  Ques: string,
+  ans: string,
+  _key: string
+}
 
 export default async function Home() {
   const page = await client.fetch<page>(homePage);
-  console.log("section: ", page.sections)
   return (
     <>
       {page?.sections?.map((section) => {
@@ -161,11 +172,10 @@ export default async function Home() {
             return <TestimonialsSection data={section} />;
           case "pricingsection":
             return <PricingSection data={section} />;
-          case "FaqAccordion":
+          case "faqsection":
             return <FaqAccordion data={section} />;
         }
       })}
-      <FaqAccordion data={page.sections[0]} />
     </>
   );
 }
