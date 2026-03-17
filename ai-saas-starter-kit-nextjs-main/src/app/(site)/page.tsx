@@ -19,7 +19,7 @@ export interface page {
   title: string;
 }
 
-export type section = Hero | Feature | ToolsTab | BenefitGrid;
+export type section = Hero | Feature | ToolsTab | BenefitGrid | testimonial;
 
 export type Hero = {
   buttons: button[];
@@ -100,8 +100,25 @@ export type benefitCard = {
   _key: string;
 }
  
+export interface testimonial {
+  heading: string;
+  description: string;
+  cards: testimonialCard[];
+  _key: string;
+  _type: "testimonialsection";
+}
+
+export type testimonialCard = {
+  name: string;
+  workat: string;
+  profileimg: image;
+  description: string;
+  _key: string;
+}
+
 export default async function Home() {
   const page = await client.fetch<page>(homePage);
+  console.log("section: ", page.sections)
   return (
     <>
       {page?.sections?.map((section) => {
@@ -114,7 +131,7 @@ export default async function Home() {
             return <ToolsTab data={section} />;
           case "benefitgridsection":
             return <BenefitsGrid data={section} />;
-          case "TestimonialsSection":
+          case "testimonialsection":
             return <TestimonialsSection data={section} />;
           case "PricingSection":
             return <PricingSection data={section} />;

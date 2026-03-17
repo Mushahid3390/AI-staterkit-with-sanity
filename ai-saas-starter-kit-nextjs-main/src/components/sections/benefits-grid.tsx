@@ -9,7 +9,6 @@ interface benefitsProps {
 }
 
 export default function BenefitsGrid({data}:benefitsProps) {
-  console.log("Benefit: ", data)
   return (
     <section className="bg-gray-900 py-14 md:py-28">
       <div className="wrapper">
