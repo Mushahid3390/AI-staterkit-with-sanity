@@ -19,7 +19,7 @@ export interface page {
   title: string;
 }
 
-export type section = Hero | Feature | ToolsTab | BenefitGrid | testimonial;
+export type section = Hero | Feature | ToolsTab | BenefitGrid | testimonial | Price;
 
 export type Hero = {
   buttons: button[];
@@ -116,6 +116,32 @@ export type testimonialCard = {
   _key: string;
 }
 
+export interface Price {
+  heading: string;
+  description: string;
+  billingPlan: billingplan[];
+  _key: string;
+  _type: "pricingsection";
+}
+
+export type billingplan = {
+  palnName: string;
+  description: string;
+  cta: string;
+  _key: string;
+  isPopular: boolean;
+  price: billingPrice[];
+  features: {acahc: string, ahdgsfhas: String}[];
+}
+
+export type billingPrice = {
+  _key: string,
+  period: string,
+  price: string,
+  saving: string,
+}
+
+
 export default async function Home() {
   const page = await client.fetch<page>(homePage);
   console.log("section: ", page.sections)
@@ -133,13 +159,13 @@ export default async function Home() {
             return <BenefitsGrid data={section} />;
           case "testimonialsection":
             return <TestimonialsSection data={section} />;
-          case "PricingSection":
+          case "pricingsection":
             return <PricingSection data={section} />;
           case "FaqAccordion":
             return <FaqAccordion data={section} />;
         }
       })}
-      <PricingSection data={page.sections[0]} />
+      <FaqAccordion data={page.sections[0]} />
     </>
   );
 }
