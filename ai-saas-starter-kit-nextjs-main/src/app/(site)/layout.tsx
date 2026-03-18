@@ -42,7 +42,6 @@ export default async function SiteLayout({
 }) {
   const navbarData = await client.fetch<navtype>(NAVBAR_QUERY, {}, options);
   const footerData = await client.fetch(footer_query, {}, options);
-  console.log("document: ", footerData)
   return (
     <div className="dark:bg-[#101828] flex flex-col flex-1">
       <Header navbarData={navbarData} />

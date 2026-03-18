@@ -4,7 +4,6 @@ import Link from "next/link";
 import { urlFor } from "../sections/hero-section";
 
 export default function Footer({data}: any) {
-  console.log("footer: ", data, urlFor(data.webwhitelogo).url());
   return (
     <footer className="relative overflow-hidden bg-gray-900">
       <span className="absolute top-0 -translate-x-1/2 left-1/2">
@@ -212,7 +211,7 @@ export default function Footer({data}: any) {
                   )}
                   {data?.services && (
                     <nav className="flex flex-col space-y-3">
-                      {data?.services?.map((service) => {
+                      {data?.services?.map((service:any) => {
                         return (
                           <Link
                             href={service.url}
@@ -232,7 +231,7 @@ export default function Footer({data}: any) {
                     </span>
 
                     <nav className="flex flex-col space-y-3">
-                      {data?.features?.map((feat) => {
+                      {data?.features?.map((feat:any) => {
                         return (
                           <Link
                             href="/"
@@ -251,7 +250,7 @@ export default function Footer({data}: any) {
                       Account
                     </span>
                     <nav className="flex flex-col space-y-3">
-                      {data?.account?.map((acc) => {
+                      {data?.account?.map((acc:any) => {
                         return (
                           <Link
                             href="/signin"
