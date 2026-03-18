@@ -13,8 +13,7 @@ import {
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Props, urlFor } from './hero-section';
-import { Hero, section, ToolsTab } from '@/app/(site)/page';
-
+import { ToolsTab } from '@/lib/type';
 // Define the tab type
 interface Tab {
   id: string;

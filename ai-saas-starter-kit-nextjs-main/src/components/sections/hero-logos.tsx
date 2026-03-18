@@ -1,4 +1,4 @@
-import { image, logo } from "@/app/(site)/page";
+import { logo } from "@/lib/type";
 import Image from "next/image";
 import React from "react";
 import { urlFor } from "./hero-section"; 

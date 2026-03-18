@@ -18,18 +18,12 @@ export async function POST(req: Request) {
     }
 
     const result = streamText({
-      model: AI_MODEL,
+      model: AI_MODEL as any,
       system: PROMPT,
       messages,
-      experimental_generateMessageId: createIdGenerator({
-        prefix: 'msgs',
-      }),
     });
 
-    return result.toDataStreamResponse({
-      getErrorMessage:
-        process.env.NODE_ENV === 'development' ? errorHandler : undefined,
-    });
+   return result.toTextStreamResponse();
   } catch (error) {
     console.log(error);
   }

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { Props, urlFor } from './hero-section';
-import { section, testimonial, testimonialCard } from '@/app/(site)/page';
+import { section, testimonial, testimonialCard } from '@/lib/type';
 
   // const testimonials = [
   //   {

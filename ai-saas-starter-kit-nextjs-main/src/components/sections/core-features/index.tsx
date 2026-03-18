@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { CORE_FEATURES } from "./data";
 import { Props } from "../hero-section";
-import { Feature, section } from "@/app/(site)/page";
+import { Feature, section } from "@/lib/type";
 import { urlFor } from "../hero-section";
 
 interface FeatureProps {

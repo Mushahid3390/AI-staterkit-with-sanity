@@ -1,18 +1,23 @@
 import { CloseIcon, MenuIcon } from '@/icons/icons';
 import Image from 'next/image';
 import Link from 'next/link';
-import DesktopNav from '../layout/header/desktop-nav';
+import DesktopNav, { link } from '../layout/header/desktop-nav';
 import ThemeToggle from '../layout/header/theme-toggle';
+import { client } from '@/sanity/client';
 
-export default function GeneratorHeader({
+
+export default  function GeneratorHeader({
   toggleSidebar,
   toggleRightSidebar,
   sidebarOpen,
+  links,
 }: {
   toggleSidebar: () => void;
   toggleRightSidebar: () => void;
   sidebarOpen: boolean;
+  links: link[];
 }) {
+  console.log("GEnerator: ", links);
   return (
     <header className="bg-white dark:bg-dark-primary border-b dark:border-gray-800 border-gray-100 sticky top-0 z-50 py-2 lg:py-4">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -53,7 +58,7 @@ export default function GeneratorHeader({
             </div>
           </div>
 
-          <DesktopNav />
+          <DesktopNav links={links}/>
 
           <div className="flex items-center gap-3 justify-self-end">
             <ThemeToggle />

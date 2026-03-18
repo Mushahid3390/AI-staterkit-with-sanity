@@ -3,7 +3,7 @@
 import { MinusIcon, PlusIcon } from "@/icons/icons";
 import { useState } from "react";
 import { Props } from "./hero-section";
-import { faq, Faq, section } from "@/app/(site)/page";
+import { faq, Faq } from "@/lib/type";
 
 // Define the FAQ item type
 interface FAQItem {

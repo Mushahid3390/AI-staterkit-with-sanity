@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { Props, urlFor } from "./hero-section"; 
-import { BenefitGrid} from "@/app/(site)/page";
+import { urlFor } from "./hero-section"; 
+import { BenefitGrid} from "@/lib/type";
 
 interface benefitsProps {
   data: BenefitGrid;

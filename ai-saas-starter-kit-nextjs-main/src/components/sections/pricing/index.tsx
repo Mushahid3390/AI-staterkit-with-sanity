@@ -8,7 +8,7 @@ import {
 import { cn } from '@/lib/utils';
 import { PricingCard } from '@/components/sections/pricing/card';
 import { Props } from '../hero-section';
-import { Price, section } from '@/app/(site)/page';
+import { Price} from '@/lib/type';
 
 // type BillingPeriodKey = (typeof BILLING_PERIODS)[number]['key'];
 interface pricingProps {

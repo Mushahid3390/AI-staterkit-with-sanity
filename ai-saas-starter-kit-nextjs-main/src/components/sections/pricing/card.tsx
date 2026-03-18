@@ -4,7 +4,7 @@ import type { TBILLING_PLAN } from '@/components/sections/pricing/data';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { PropsWithChildren } from 'react';
-import { billingplan } from '@/app/(site)/page';
+import { billingplan } from '@/lib/type';
 
 type Props = {
   plan: billingplan;
