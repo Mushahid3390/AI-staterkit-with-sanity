@@ -4,11 +4,14 @@ import { useState } from 'react';
 import GeneratorHeader from './generator-header';
 import GeneratorSidebar from './sidebar/generator-sidebar';
 import RightSidebar from './sidebar/chat-history-sidebar';
+import { link } from '../layout/header/desktop-nav';
 
 export default function GeneratorWrapper({
+  links,
   children,
 }: {
   children: React.ReactNode;
+  links: link[];
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [rightSidebarOpen, setRightSidebarOpen] = useState(false);
@@ -25,6 +28,7 @@ export default function GeneratorWrapper({
         toggleSidebar={toggleSidebar}
         sidebarOpen={sidebarOpen}
         toggleRightSidebar={toggleRightSidebar}
+        links={links}
       />
 
       <div className="isolate relative grid lg:grid-cols-[auto_1fr_auto] dark:bg-dark-secondary flex-[1_1_0]">

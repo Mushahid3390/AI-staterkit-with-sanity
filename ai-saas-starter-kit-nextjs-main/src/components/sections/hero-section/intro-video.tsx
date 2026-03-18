@@ -3,17 +3,21 @@
 import FsLightbox from 'fslightbox-react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { button } from '@/lib/type';
 
-const videoUrl = 'https://www.youtube.com/watch?v=_iHmNaQBtKk';
+// const videoUrl = 'https://www.youtube.com/watch?v=_iHmNaQBtKk';
 
-export function IntroVideo() {
+interface videoProps{
+  video: button,
+}
+
+export function IntroVideo({video}:videoProps) {
   const [isMounted, setIsMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
   return (
     <>
       <button
@@ -34,12 +38,12 @@ export function IntroVideo() {
             />
           </svg>
         </span>
-        Watch Intro Video
+        {video.btnlabel}
       </button>
 
       {isMounted &&
         createPortal(
-          <FsLightbox toggler={isOpen} sources={[videoUrl]} />,
+          <FsLightbox toggler={isOpen} sources={[video.btnurl]} />,
           document.body
         )}
     </>

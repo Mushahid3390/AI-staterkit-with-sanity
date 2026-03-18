@@ -1,8 +1,9 @@
 import { getCurrentYear } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { urlFor } from "../sections/hero-section";
 
-export default function Footer() {
+export default function Footer({data}: any) {
   return (
     <footer className="relative overflow-hidden bg-gray-900">
       <span className="absolute top-0 -translate-x-1/2 left-1/2">
@@ -48,16 +49,14 @@ export default function Footer() {
               <div>
                 <Link href="/" className="block mb-6">
                   <Image
-                    src="/images/logo-white.svg"
+                    src={urlFor(data?.webwhitelogo).url()}
                     alt="logo"
                     width={128}
                     height={32}
                   />
                 </Link>
                 <p className="block text-sm text-gray-400 mb-9">
-                  A self-hosted AI starter kit built with Next.js, Tailwind CSS,
-                  and OpenAI integrations. Perfect for developers and startups
-                  to quickly build, deploy, and scale AI-powered SaaS products.
+                  {data?.description}
                 </p>
                 <div className="flex">
                   <a
@@ -205,134 +204,91 @@ export default function Footer() {
             <div className="lg:col-span-6 xl:col-span-5">
               <div className="grid sm:grid-cols-3 gap-7">
                 <div>
-                  <span className="block mb-6 text-sm text-gray-400">
-                    Services
-                  </span>
-                  <nav className="flex flex-col space-y-3">
-                    <Link
-                      href="/"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Status
-                    </Link>
-                    <Link
-                      href="/pricing"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Pricing
-                    </Link>
-                    <Link
-                      href="/pricing#faq"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      FAQ
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Help Docs
-                    </Link>
-                    <Link
-                      href="/privacy"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Privacy Policy
-                    </Link>
-                  </nav>
+                  {data?.services && (
+                    <span className="block mb-6 text-sm text-gray-400">
+                      Services
+                    </span>
+                  )}
+                  {data?.services && (
+                    <nav className="flex flex-col space-y-3">
+                      {data?.services?.map((service:any) => {
+                        return (
+                          <Link
+                            href={service.url}
+                            className="text-sm font-normal text-gray-400 transition hover:text-white"
+                          >
+                            {service.service}
+                          </Link>
+                        );
+                      })}
+                    </nav>
+                  )}
                 </div>
-                <div>
-                  <span className="block mb-6 text-sm text-gray-400">
-                    Features
-                  </span>
-                  <nav className="flex flex-col space-y-3">
-                    <Link
-                      href="/"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      HTML File Upload
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      HTML website hosting
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Free Image Hosting
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Upload PDF Online
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Free Zip file hosting
-                    </Link>
-                  </nav>
-                </div>
-                <div>
-                  <span className="relative block mb-6 text-sm text-gray-400">
-                    Account
-                  </span>
-                  <nav className="flex flex-col space-y-3">
-                    <Link
-                      href="/signin"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Login
-                    </Link>
-                    <Link
-                      href="/signup"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Sign Up
-                    </Link>
-                    <Link
-                      href="/reset-password"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Reset Password
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Support
-                    </Link>
-                  </nav>
-                </div>
+                {data?.features && (
+                  <div>
+                    <span className="block mb-6 text-sm text-gray-400">
+                      Features
+                    </span>
+
+                    <nav className="flex flex-col space-y-3">
+                      {data?.features?.map((feat:any) => {
+                        return (
+                          <Link
+                            href="/"
+                            className="text-sm font-normal text-gray-400 transition hover:text-white"
+                          >
+                            {feat.feature}
+                          </Link>
+                        );
+                      })}
+                    </nav>
+                  </div>
+                )}
+                {data?.account && (
+                  <div>
+                    <span className="relative block mb-6 text-sm text-gray-400">
+                      Account
+                    </span>
+                    <nav className="flex flex-col space-y-3">
+                      {data?.account?.map((acc:any) => {
+                        return (
+                          <Link
+                            href="/signin"
+                            className="text-sm font-normal text-gray-400 transition hover:text-white"
+                          >
+                            {acc.title}
+                          </Link>
+                        );
+                      })}
+                    </nav>
+                  </div>
+                )}
               </div>
             </div>
             <div className="lg:col-span-3">
-              <div>
-                <span className="block mb-6 text-sm text-gray-400">
-                  Stay In Touch
-                </span>
-                <p className="block mb-5 text-sm text-gray-400">
-                  Subscribe now for exclusive insights and offers!
-                </p>
-                <form>
-                  <div className="flex flex-col items-center gap-2 w-full sm:max-w-64">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="w-full h-12 p-4 text-sm text-white border border-gray-700 rounded-full placeholder:text-center placeholder:text-gray-400 placeholder:text-sm text-center placeholder:font-normal focus:outline-0"
-                      required
-                    />
-                    <button className="w-full px-6 py-3 text-sm font-medium text-white transition rounded-full cursor-pointer bg-primary-500 hover:bg-primary-600">
-                      Subscribe Now
-                    </button>
-                  </div>
-                </form>
-              </div>
+              {data?.contact && (
+                <div>
+                  <span className="block mb-6 text-sm text-gray-400">
+                    {data.contact.title}
+                  </span>
+                  <p className="block mb-5 text-sm text-gray-400">
+                    {data.contact.description}
+                  </p>
+                  <form>
+                    <div className="flex flex-col items-center gap-2 w-full sm:max-w-64">
+                      <input
+                        type="email"
+                        placeholder="Enter your email"
+                        className="w-full h-12 p-4 text-sm text-white border border-gray-700 rounded-full placeholder:text-center placeholder:text-gray-400 placeholder:text-sm text-center placeholder:font-normal focus:outline-0"
+                        required
+                      />
+                      <button className="w-full px-6 py-3 text-sm font-medium text-white transition rounded-full cursor-pointer bg-primary-500 hover:bg-primary-600">
+                        {data.contact.buttons[0].label}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              )}
             </div>
           </div>
         </div>

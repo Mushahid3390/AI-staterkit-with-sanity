@@ -5,17 +5,39 @@ import HeroSection from '@/components/sections/hero-section';
 import ToolsTab from '@/components/sections/tools-tab';
 import { CoreFeatures } from '@/components/sections/core-features';
 import PricingSection from '@/components/sections/pricing';
+import {client} from '@/sanity/client'
+import { page } from '@/lib/type';
+
+const homePage = `*[_type == "homepage" && slug.current == "home-page"][0]{
+    title,
+    slug,
+    sections[]
+}`;
+
+
 
 export default async function Home() {
+  const page = await client.fetch<page>(homePage);
   return (
     <>
-      <HeroSection />
-      <CoreFeatures />
-      <ToolsTab />
-      <BenefitsGrid />
-      <TestimonialsSection />
-      <PricingSection />
-      <FaqAccordion />
+      {page?.sections?.map((section) => {
+        switch (section._type) {
+          case "herosection":
+            return <HeroSection data={section} />;
+          case "featuresection":
+            return <CoreFeatures data={section} />;
+          case "toolstabsection":
+            return <ToolsTab data={section} />;
+          case "benefitgridsection":
+            return <BenefitsGrid data={section} />;
+          case "testimonialsection":
+            return <TestimonialsSection data={section} />;
+          case "pricingsection":
+            return <PricingSection data={section} />;
+          case "faqsection":
+            return <FaqAccordion data={section} />;
+        }
+      })}
     </>
   );
 }
