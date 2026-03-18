@@ -1,14 +1,19 @@
-'use client';
-import { CloseIcon, MenuIcon } from '@/icons/icons';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import DesktopNav from './desktop-nav';
-import MainMobileNav from './main-mobile-nav';
-import ThemeToggle from './theme-toggle';
-import { usePathname } from 'next/navigation';
+"use client";
+import { CloseIcon, MenuIcon } from "@/icons/icons";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import DesktopNav from "./desktop-nav";
+import MainMobileNav from "./main-mobile-nav";
+import ThemeToggle from "./theme-toggle";
+import { usePathname } from "next/navigation";
+import { navtype } from "@/app/(site)/layout";
 
-export default  function Header() {
+type HeaderProps = {
+  navbarData: navtype;
+};
+
+export default function Header({ navbarData }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -23,7 +28,7 @@ export default  function Header() {
           <div className="flex items-center">
             <Link href="/" className="flex items-end gap-2">
               <Image
-                src={"/images/logo-black.svg"}
+                src={navbarData.logowhite}
                 className="block dark:hidden"
                 alt="AiStarterKit Logo"
                 width={180}
@@ -31,7 +36,7 @@ export default  function Header() {
               />
 
               <Image
-                src="/images/logo-white.svg"
+                src={navbarData.logobalck}
                 className="hidden dark:block"
                 alt="AiStarterKit Logo"
                 width={180}
@@ -44,7 +49,7 @@ export default  function Header() {
             </Link>
           </div>
 
-          <DesktopNav />
+          <DesktopNav links={navbarData.links} />
 
           <div className="flex items-center gap-4 justify-self-end">
             <ThemeToggle />
@@ -61,17 +66,17 @@ export default  function Header() {
             </button>
 
             <Link
-              href="/signin"
+              href={navbarData.buttons[0].href}
               className="text-sm hidden lg:block font-medium text-gray-700 dark:text-gray-400 hover:text-primary-500"
             >
-              Sign In
+              {navbarData.buttons[0].label}
             </Link>
 
             <Link
-              href="/signup"
+              href={navbarData.buttons[1].href}
               className="lg:inline-flex items-center px-5 py-3 gradient-btn hidden text-sm text-white rounded-full button-bg h-11"
             >
-              Get Started Free
+              {navbarData.buttons[1].label}
             </Link>
           </div>
         </div>
