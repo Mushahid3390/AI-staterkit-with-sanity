@@ -2,12 +2,21 @@ import { defineType, defineField } from "sanity";
 
 export const footerType = defineType({
   name: 'footer',
-  title: 'Footer',
   type: 'document',
+  preview: {
+    prepare(){
+        return {title: "Footer"}
+    }
+  },
   fields: [
     defineField({
-      name: 'weblogo',
-      title: 'Website Logo',
+      name: 'webwhitelogo',
+      title: 'Website White Logo',
+      type: 'image',
+    }),
+    defineField({
+      name: 'webblacklogo',
+      title: 'Website Black Logo',
       type: 'image',
     }),
     defineField({
@@ -24,7 +33,7 @@ export const footerType = defineType({
           type: 'object',
           fields: [
             {name: 'logo', title: 'Social Logo', type: 'image'},
-            {name: 'logourl', title: 'url', type: 'url'},
+            {name: 'logourl', title: 'url', type: 'string'},
           ],
         },
       ],
@@ -38,7 +47,7 @@ export const footerType = defineType({
           type: 'object',
           fields: [
             {name: 'service', title: 'label', type: 'string'},
-            {name: 'url', title: 'Url', type: 'url'},
+            {name: 'url', title: 'Url', type: 'string'},
           ],
         },
       ],
@@ -52,7 +61,7 @@ export const footerType = defineType({
           type: 'object',
           fields: [
             {name: 'feature', title: 'label', type: 'string'},
-            {name: 'url', title: 'Url', type: 'url'},
+            {name: 'url', title: 'Url', type: 'string'},
           ],
         },
       ],
@@ -66,7 +75,7 @@ export const footerType = defineType({
           type: 'object',
           fields: [
             {name: 'title', title: 'label', type: 'string'},
-            {name: 'url', title: 'Url', type: 'url'},
+            {name: 'url', title: 'Url', type: 'string'},
           ],
         },
       ],

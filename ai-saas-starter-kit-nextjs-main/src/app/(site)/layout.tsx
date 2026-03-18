@@ -24,6 +24,8 @@ href
 }
 `;
 
+const footer_query = `*[_type=="footer"][0]{...}`;
+
 export interface navtype {
   logobalck: string;
   logowhite: string;
@@ -39,11 +41,13 @@ export default async function SiteLayout({
   children: React.ReactNode;
 }) {
   const navbarData = await client.fetch<navtype>(NAVBAR_QUERY, {}, options);
+  const footerData = await client.fetch(footer_query, {}, options);
+  console.log("document: ", footerData)
   return (
     <div className="dark:bg-[#101828] flex flex-col flex-1">
       <Header navbarData={navbarData} />
       <div className="isolate flex-1 flex flex-col">{children}</div>
-      <Footer />
+      <Footer data= {footerData}/>
     </div>
   );
 }
