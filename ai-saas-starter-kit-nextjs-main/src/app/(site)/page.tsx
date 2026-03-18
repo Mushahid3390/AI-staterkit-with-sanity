@@ -14,10 +14,10 @@ const homePage = `*[_type == "homepage" && slug.current == "home-page"][0]{
     sections[]
 }`;
 
-
+const options = { next: { revalidate: 30 } };
 
 export default async function Home() {
-  const page = await client.fetch<page>(homePage);
+  const page = await client.fetch<page>(homePage,{},options);
   return (
     <>
       {page?.sections?.map((section) => {

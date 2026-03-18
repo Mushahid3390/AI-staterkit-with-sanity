@@ -11,12 +11,12 @@ title,
 "slug": slug.current
 }
 }}`;
-
+const options = { next: { revalidate: 30 } };
 export default async function GeneratorLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-   const deskLinks = await client.fetch(link);
+   const deskLinks = await client.fetch(link, {}, options);
   return <GeneratorWrapper links={deskLinks.links}>{children}</GeneratorWrapper>;
 }
