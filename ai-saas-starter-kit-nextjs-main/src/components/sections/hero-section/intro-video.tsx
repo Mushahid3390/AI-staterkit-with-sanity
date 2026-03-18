@@ -3,7 +3,7 @@
 import FsLightbox from 'fslightbox-react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { button } from '@/app/(site)/page';
+import { button } from '@/lib/type';
 
 // const videoUrl = 'https://www.youtube.com/watch?v=_iHmNaQBtKk';
 

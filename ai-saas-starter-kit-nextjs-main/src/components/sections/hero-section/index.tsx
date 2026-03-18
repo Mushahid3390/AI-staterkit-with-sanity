@@ -3,10 +3,10 @@ import Link from 'next/link';
 import HeroLogos from '../hero-logos';
 import { Subheading } from './subheading';
 import { IntroVideo } from './intro-video';
-import { Hero, section } from '@/app/(site)/page';
+import { Hero, section } from '@/lib/type'
 import CreateImageUrlBuilder, { createImageUrlBuilder } from '@sanity/image-url';
 import { client } from "@/sanity/client";
-import { image } from '@/app/(site)/page';
+import { image } from '@/lib/type';
 
 const builder = createImageUrlBuilder(client);
 
